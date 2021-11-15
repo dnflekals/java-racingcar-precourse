@@ -13,15 +13,15 @@ public class RaceGame {
     private String inputString;
     private int moveCount;
     private List<String> carNames;
-    private ArrayList<Car> carMembers = new ArrayList<Car>();
-    private ArrayList<String> winner = new ArrayList<String>();
+    private final ArrayList<Car> carMembers = new ArrayList<>();
+    private final ArrayList<String> winner = new ArrayList<>();
 
     private void inputCarName() {
         inputString = scanner.nextLine();
     }
 
     private void splitInputString() {
-        carNames = new ArrayList<String>(Arrays.asList(inputString.split(",")));
+        carNames = new ArrayList<>(Arrays.asList(inputString.split(",")));
     }
 
     private boolean checkValidation() {
@@ -63,13 +63,13 @@ public class RaceGame {
         return true;
     }
 
-    void makeCarObject() {
+    private void makeCarObject() {
         for (String carName : carNames) {
             carMembers.add(new Car(carName));
         }
     }
 
-    void inputMoveCount() {
+    private void inputMoveCount() {
         boolean isContinue = true;
         while (isContinue) {
             System.out.println("시도할 회수는 몇회인가요?");
@@ -88,7 +88,7 @@ public class RaceGame {
         return isNumeric;
     }
 
-    void moveCar() {
+    private void moveCar() {
         System.out.println("실행 결과");
 
         for (int i = 0; i < moveCount; i++) {
@@ -99,7 +99,7 @@ public class RaceGame {
         }
     }
 
-    void setWinner() {
+    private void setWinner() {
         int maxPosition = 0;
         for (Car carMember : carMembers) {
             int position = carMember.getPosition();
@@ -115,7 +115,7 @@ public class RaceGame {
         }
     }
 
-    void getWinner() {
+    private void getWinner() {
         String result = String.join(", ", winner);
         System.out.print("최종 우승자: " + result);
     }
