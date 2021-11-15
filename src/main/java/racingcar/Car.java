@@ -13,9 +13,12 @@ public class Car {
 
     void move() {
         boolean goOneStep = canMove();
+
         if (goOneStep) {
             position++;
         }
+
+        getPositionMessage();
     }
 
     private boolean canMove() {
@@ -26,5 +29,13 @@ public class Car {
         } else {
             return false;
         }
+    }
+
+    private void getPositionMessage() {
+        System.out.print(this.name+" : ");
+        for(int i=0;i<this.position;i++){
+            System.out.print("-");
+        }
+        System.out.println();
     }
 }
