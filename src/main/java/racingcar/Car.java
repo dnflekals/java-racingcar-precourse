@@ -38,4 +38,12 @@ public class Car {
         }
         System.out.println();
     }
+
+    int getPosition(){
+        return this.position;
+    }
+
+    String getName(){
+        return this.name;
+    }
 }

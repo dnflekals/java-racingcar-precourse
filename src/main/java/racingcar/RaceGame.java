@@ -14,6 +14,7 @@ public class RaceGame {
     private int moveCount;
     private List<String> carNames;
     private ArrayList<Car> carMembers = new ArrayList<Car>();
+    private ArrayList<String> winner = new ArrayList<String>();
 
     private void inputCarName() {
         inputString = scanner.nextLine();
@@ -84,6 +85,24 @@ public class RaceGame {
         }
     }
 
+    void setWinner() {
+        int maxPosition = 0;
+
+        for (Car carMember : carMembers) {
+            int position = carMember.getPosition();
+
+            if (position > maxPosition) {
+                maxPosition=position;
+                winner.clear();
+                String name = carMember.getName();
+                winner.add(name);
+            } else if (position == maxPosition) {
+                String name = carMember.getName();
+                winner.add(name);
+            }
+        }
+    }
+
     void startGame() {
         boolean isContinue = true;
 
@@ -98,5 +117,7 @@ public class RaceGame {
         inputMoveCount();
 
         moveCar();
+
+        setWinner();
     }
 }
