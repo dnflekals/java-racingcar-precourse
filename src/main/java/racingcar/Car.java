@@ -6,6 +6,9 @@ public class Car {
 
     private final String name;
     private int position = 0;
+    private static final int MIN_VALUE = 0;
+    private static final int MAX_VALUE = 9;
+    private static final int REFERENCE_POINT = 3;
 
     public Car(String name) {
         this.name = name;
@@ -22,9 +25,9 @@ public class Car {
     }
 
     private boolean canMove() {
-        int randomNumber = RandomUtils.nextInt(0, 9);
+        int randomNumber = RandomUtils.nextInt(MIN_VALUE, MAX_VALUE);
 
-        if (randomNumber > 3) {
+        if (randomNumber > REFERENCE_POINT) {
             return true;
         } else {
             return false;
