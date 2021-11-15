@@ -74,17 +74,17 @@ public class RaceGame {
         while (isContinue) {
             System.out.println("시도할 회수는 몇회인가요?");
             String inputString = scanner.nextLine();
-            isContinue=!isNumber(inputString);
-            if(isContinue){
-                System.out.println("[ERROR] 시도 횟수는 숫자여야 한다.");
-            } else{
+            isContinue = !isNumber(inputString);
+            if (!isContinue) {
                 moveCount = Integer.parseInt(inputString);
+                break;
             }
+            System.out.println("[ERROR] 시도 횟수는 숫자여야 한다.");
         }
     }
 
-    private boolean isNumber(String inputCount){
-        boolean isNumeric =  inputCount.matches("[+-]?\\d*(\\.\\d+)?");
+    private boolean isNumber(String inputCount) {
+        boolean isNumeric = inputCount.matches("[+-]?\\d*(\\.\\d+)?");
         return isNumeric;
     }
 
@@ -122,7 +122,6 @@ public class RaceGame {
 
     void startGame() {
         boolean isContinue = true;
-
         while (isContinue) {
             System.out.println("경주할 자동차 이름을 입력하세요.");
             inputCarName();

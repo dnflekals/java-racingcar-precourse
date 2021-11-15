@@ -29,9 +29,8 @@ public class Car {
 
         if (randomNumber > REFERENCE_POINT) {
             return true;
-        } else {
-            return false;
         }
+        return false;
     }
 
     private void getPositionMessage() {
