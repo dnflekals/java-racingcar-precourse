@@ -2,8 +2,10 @@ package racingcar;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Set;
 
 public class RaceGame {
 
@@ -20,10 +22,15 @@ public class RaceGame {
     }
 
     private boolean checkValidation() {
-        boolean isValidation = true;
+        boolean isValidation;
 
         isValidation = isNameLessThanFiveLetters();
-        if (isValidation == false) {
+        if (!isValidation) {
+            return true;
+        }
+
+        isValidation = checkDuplicatedName();
+        if (!isValidation) {
             return true;
         }
 
@@ -33,9 +40,22 @@ public class RaceGame {
     private boolean isNameLessThanFiveLetters() {
         for (String carName : carNames) {
             if (carName.length() > 5) {
-                System.out.println("[ERROR] 5글자 이하로 입력해주세요.");
+                System.out.println("5글자 이하로 입력해주세요.");
                 return false;
             }
+        }
+        return true;
+    }
+
+    private boolean checkDuplicatedName() {
+        Set<String> set = new HashSet<>();
+
+        for (String carName : carNames) {
+            if (set.contains(carName)) {
+                System.out.println("중복된 이름이 입력됐습니다.");
+                return false;
+            }
+            set.add(carName);
         }
         return true;
     }
