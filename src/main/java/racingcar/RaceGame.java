@@ -92,7 +92,7 @@ public class RaceGame {
             int position = carMember.getPosition();
 
             if (position > maxPosition) {
-                maxPosition=position;
+                maxPosition = position;
                 winner.clear();
                 String name = carMember.getName();
                 winner.add(name);
@@ -101,6 +101,11 @@ public class RaceGame {
                 winner.add(name);
             }
         }
+    }
+
+    void getWinner() {
+        String result = String.join(", ", winner);
+        System.out.print("최종 우승자: " + result);
     }
 
     void startGame() {
@@ -119,5 +124,6 @@ public class RaceGame {
         moveCar();
 
         setWinner();
+        getWinner();
     }
 }
