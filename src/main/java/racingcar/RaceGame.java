@@ -11,6 +11,7 @@ public class RaceGame {
 
     private String inputString;
     private List<String> carNames;
+    private ArrayList<Car> carMembers = new ArrayList<Car>();
 
     private void inputCarName() {
         Scanner scanner = new Scanner(System.in);
@@ -60,6 +61,12 @@ public class RaceGame {
         return true;
     }
 
+    void makeCarObject() {
+        for (String carName : carNames) {
+            carMembers.add(new Car(carName));
+        }
+    }
+
     void startGame() {
         boolean isContinue = true;
 
@@ -69,5 +76,6 @@ public class RaceGame {
             isContinue = checkValidation();
         }
 
+        makeCarObject();
     }
 }
