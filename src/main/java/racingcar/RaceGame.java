@@ -19,8 +19,35 @@ public class RaceGame {
         carNames = new ArrayList<String>(Arrays.asList(inputString.split(",")));
     }
 
+    private boolean checkValidation() {
+        boolean isValidation = true;
+
+        isValidation = isNameLessThanFiveLetters();
+        if (isValidation == false) {
+            return true;
+        }
+
+        return false;
+    }
+
+    private boolean isNameLessThanFiveLetters() {
+        for (String carName : carNames) {
+            if (carName.length() > 5) {
+                System.out.println("[ERROR] 5글자 이하로 입력해주세요.");
+                return false;
+            }
+        }
+        return true;
+    }
+
     void startGame() {
-        inputCarName();
-        splitInputString();
+        boolean isContinue = true;
+
+        while (isContinue) {
+            inputCarName();
+            splitInputString();
+            isContinue = checkValidation();
+        }
+
     }
 }
