@@ -32,18 +32,18 @@ public class Car {
     }
 
     private void getPositionMessage() {
-        System.out.print(this.name+" : ");
-        for(int i=0;i<this.position;i++){
+        System.out.print(this.name + " : ");
+        for (int i = 0; i < this.position; i++) {
             System.out.print("-");
         }
         System.out.println();
     }
 
-    int getPosition(){
+    int getPosition() {
         return this.position;
     }
 
-    String getName(){
+    String getName() {
         return this.name;
     }
 }

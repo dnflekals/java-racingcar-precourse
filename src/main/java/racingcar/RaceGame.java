@@ -87,10 +87,8 @@ public class RaceGame {
 
     void setWinner() {
         int maxPosition = 0;
-
         for (Car carMember : carMembers) {
             int position = carMember.getPosition();
-
             if (position > maxPosition) {
                 maxPosition = position;
                 winner.clear();
@@ -118,11 +116,8 @@ public class RaceGame {
             isContinue = checkValidation();
         }
         makeCarObject();
-
         inputMoveCount();
-
         moveCar();
-
         setWinner();
         getWinner();
     }
