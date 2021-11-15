@@ -9,12 +9,13 @@ import java.util.Set;
 
 public class RaceGame {
 
+    Scanner scanner = new Scanner(System.in);
     private String inputString;
+    private int moveCount;
     private List<String> carNames;
     private ArrayList<Car> carMembers = new ArrayList<Car>();
 
     private void inputCarName() {
-        Scanner scanner = new Scanner(System.in);
         inputString = scanner.nextLine();
     }
 
@@ -67,6 +68,18 @@ public class RaceGame {
         }
     }
 
+    void inputMoveCount() {
+        moveCount = scanner.nextInt();
+    }
+
+    void moveCar() {
+        for(int i=0;i<moveCount;i++) {
+            for (Car carMember : carMembers) {
+                carMember.move();
+            }
+        }
+    }
+
     void startGame() {
         boolean isContinue = true;
 
@@ -75,7 +88,10 @@ public class RaceGame {
             splitInputString();
             isContinue = checkValidation();
         }
-
         makeCarObject();
+
+        inputMoveCount();
+
+        moveCar();
     }
 }
