@@ -100,15 +100,8 @@ public class RaceGame {
     }
 
     private void setWinner() {
-        int maxPosition = 0;
         for (Car carMember : carMembers) {
-            int position = carMember.getPosition();
-            if (position > maxPosition) {
-                maxPosition = position;
-                winner.clear();
-                String name = carMember.getName();
-                winner.add(name);
-            } else if (position == maxPosition) {
+            if (carMember.isMaxPosition(carMember)) {
                 String name = carMember.getName();
                 winner.add(name);
             }
