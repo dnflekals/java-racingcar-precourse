@@ -43,7 +43,7 @@ public class RaceGame {
     private boolean isNameLessThanFiveLetters() {
         for (String carName : carNames) {
             if (carName.length() > 5) {
-                System.out.println("5글자 이하로 입력해주세요.");
+                System.out.println("[ERROR] 5글자 이하로 입력해주세요.");
                 return false;
             }
         }
@@ -55,7 +55,7 @@ public class RaceGame {
 
         for (String carName : carNames) {
             if (set.contains(carName)) {
-                System.out.println("중복된 이름이 입력됐습니다.");
+                System.out.println("[ERROR] 중복된 이름이 입력됐습니다.");
                 return false;
             }
             set.add(carName);
@@ -70,8 +70,22 @@ public class RaceGame {
     }
 
     void inputMoveCount() {
-        System.out.println("시도할 회수는 몇회인가요?");
-        moveCount = scanner.nextInt();
+        boolean isContinue = true;
+        while (isContinue) {
+            System.out.println("시도할 회수는 몇회인가요?");
+            String inputString = scanner.nextLine();
+            isContinue=!isNumber(inputString);
+            if(isContinue){
+                System.out.println("[ERROR] 시도 횟수는 숫자여야 한다.");
+            } else{
+                moveCount = Integer.parseInt(inputString);
+            }
+        }
+    }
+
+    private boolean isNumber(String inputCount){
+        boolean isNumeric =  inputCount.matches("[+-]?\\d*(\\.\\d+)?");
+        return isNumeric;
     }
 
     void moveCar() {
